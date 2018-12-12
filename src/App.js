@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
 import './App.css';
-
+import TodoItem from './components/TodoItem';
+import TodoForm from './components/TodoForm';
 
 function App() {
-  const [todos, setToDos] = useState([
+  const [todos, setTodos] = useState([
     { text: 'Learn about React' },
     { text: 'Meet friends for lunch'},
     { text: 'Build todo app'},
   ]);
   
-  const Todo = ({ todo }) => <div className="todo">{ todo.text }</div>;
   const TodoList = todos.map((todo, i) => {
-    return <Todo key={i} index={i} todo={todo} />
+    return <TodoItem key={i} index={i} todo={todo} />
   });
-
+  const addTodo = (item) => {
+    setTodos([
+      ...todos,
+      {text: item}
+    ]);
+  }
   return (
     <div className="app">
       <div className="todo-list">
-        { TodoList }   
+        { TodoList }
+        <TodoForm addTodo={addTodo} />
       </div>
     </div>
   );
 };
-
 
 export default App;
