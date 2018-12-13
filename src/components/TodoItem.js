@@ -1,5 +1,18 @@
 import React from 'react';
 
-const Todo = ({ todo }) => <div className="todo">{ todo.text }</div>;
+function TodoItem({ todo, index, completeTodo }) {
+  const CompleteButton = () => <button onClick={() => completeTodo(index)}>Complete</button>;
+  return (
+    <div
+      className="todo"
+      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+    >
+      {todo.text}
+      <div>
+        <CompleteButton />
+      </div>
+    </div>
+  );
+}
 
-export default Todo;
+export default TodoItem;

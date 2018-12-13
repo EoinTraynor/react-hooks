@@ -9,20 +9,29 @@ function App() {
     { text: 'Meet friends for lunch'},
     { text: 'Build todo app'},
   ]);
-  
-  const TodoList = todos.map((todo, i) => {
-    return <TodoItem key={i} index={i} todo={todo} />
-  });
+
   const addTodo = (item) => {
     setTodos([
       ...todos,
       {text: item}
     ]);
   }
+  const completeTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
   return (
     <div className="app">
       <div className="todo-list">
-        { TodoList }
+        {todos.map((todo, index) => (
+          <TodoItem
+            key={index}
+            index={index}
+            todo={todo}
+            completeTodo={completeTodo}
+          />
+        ))}
         <TodoForm addTodo={addTodo} />
       </div>
     </div>
