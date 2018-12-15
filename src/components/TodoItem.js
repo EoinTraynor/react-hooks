@@ -1,7 +1,8 @@
 import React from 'react';
 
-function TodoItem({ todo, index, completeTodo }) {
+function TodoItem({ todo, index, completeTodo, removeTodo }) {
   const CompleteButton = () => <button onClick={() => completeTodo(index)}>Complete</button>;
+  const RemoveButton = () => <button onClick={() => removeTodo(index)}>X</button>;
   return (
     <div
       className="todo"
@@ -10,6 +11,7 @@ function TodoItem({ todo, index, completeTodo }) {
       {todo.text}
       <div>
         <CompleteButton />
+        <RemoveButton />
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function TodoForm({ addTodo }) {
 
   return(
     <form onSubmit={handleSubmit}>
-      <input 
+      <input
         type="text"
         className="input"
         value={value}
